@@ -16,4 +16,4 @@ The default key provider just echos the environment variable POSTGRES_TDE_KEY. I
 1. POSTGRES_PASSWORD the password for POSTGRES_USER (default: changeme)
 1. POSTGRES_DB_NAME the name of the database (default: postgresql)
 1. POSTGRES_PORT the port to run postgres on
-1. POSTGRES_TDE_KEY the encryption key used to encrypt the database (default: THIS_IS_A_SUPER_SECRET_KEY)
+1. POSTGRES_TDE_KEY the 32 character hex key used to encrypt the database (default: dd015df7f1374ba6e37916f608ddb3f4)

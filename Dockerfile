@@ -6,7 +6,7 @@ ENV POSTGRES_USER=postgresql
 ENV POSTGRES_PASSWORD=changeme
 ENV POSTGRES_DB_NAME=postgresql
 ENV POSTGRES_PORT=5432
-ENV POSTGRES_TDE_KEY=THIS_IS_A_SUPER_SECRET_KEY
+ENV POSTGRES_TDE_KEY=dd015df7f1374ba6e37916f608ddb3f4
 
 COPY scripts/*.sh /opt/pgtde/
 
@@ -37,10 +37,5 @@ RUN ln -sf /proc/1/fd/1 /var/lib/pgsql/logfile
 EXPOSE 5432
 
 USER postgresql
-
-RUN echo "listen_addresses = '*'" >> /var/lib/pgsql/data/postgresql.conf && \
-  echo "port = ${POSTGRES_PORT}" >> /var/lib/pgsql/data/postgresql.conf && \
-  echo "host  all all   0.0.0.0/0   md5" >> /var/lib/pgsql/data/pg_hba.conf && \
-  echo "host  all all   ::/0   md5" >> /var/lib/pgsql/data/pg_hba.conf 
 
 ENTRYPOINT /opt/pgtde/entrypoint.sh
