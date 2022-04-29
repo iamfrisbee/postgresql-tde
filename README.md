@@ -2,6 +2,14 @@
 
 This image uses the open source TDE version of postgresql created by [Cybertec](https://www.cybertec-postgresql.com/en/products/postgresql-transparent-data-encryption/)
 
+## Key provider
+
+The default key provider just echos the environment variable POSTGRES_TDE_KEY. It is recommended that you override this functionality by creating your own script that echos your encryption key and replace the script at `/opt/pgtde/scripts/provide_key.sh`
+
+```bash
+% docker run -d -p 5432:5432 -v /path/to/your/script.sh:/opt/pgtde/scripts/provide_key.sh pgsqltde
+```
+
 ## Environment Variables
 
 1. POSTGRES_USER a user to connect to the postgres database with (default: postgresql)
