@@ -7,7 +7,15 @@ This image uses the open source TDE version of postgresql created by [Cybertec](
 The default key provider just echos the environment variable POSTGRES_TDE_KEY. It is recommended that you override this functionality by creating your own script that echos your encryption key and replace the script at `/opt/pgtde/scripts/provide_key.sh`
 
 ```bash
-% docker run -d -p 5432:5432 -v /path/to/your/script.sh:/opt/pgtde/scripts/provide_key.sh pgsqltde
+% docker run -d -p 5432:5432 -v /path/to/your/script.sh:/opt/pgtde/scripts/provide_key.sh iamfrisbee/postgresql-tde
+```
+
+## Cluster director
+
+If you want to mount a local directory to contain the postgres database cluster, mount to `/var/lib/pgsql`
+
+```bash
+% docker run -d -p 5432:5432 -v /path/to/your/cluster:/var/lib/pgsql iamfrisbee/postgresql-tde
 ```
 
 ## Environment Variables

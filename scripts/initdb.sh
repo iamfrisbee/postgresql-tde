@@ -13,6 +13,6 @@ echo "host  all all   ::/0   md5" >> /var/lib/pgsql/data/pg_hba.conf
 
 # create the connecting user
 /usr/local/pg12tde/bin/createdb ${POSTGRES_DB_NAME}
-/usr/local/pg12tde/bin/createuser ${POSTGRES_USER}
+/usr/local/pg12tde/bin/createuser -s ${POSTGRES_USER} 
 /usr/local/pg12tde/bin/psql ${POSTGRES_DB_NAME} -c "ALTER USER ${POSTGRES_USER} with encrypted password '${POSTGRES_PASSWORD}';"
 /usr/local/pg12tde/bin/psql ${POSTGRES_DB_NAME} -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ${POSTGRES_USER};"
